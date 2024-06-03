@@ -1,5 +1,4 @@
 import pickle
-import time
 from typing import List, Sequence, Tuple
 
 from anki.notes import NoteId, Note
@@ -22,9 +21,10 @@ def setup_browser_menu(browser: Browser):
     a.triggered.connect(lambda: bulk_update_selected_notes(browser))
     browser.form.menuEdit.addSeparator()
     browser.form.menuEdit.addAction(a)
+    # TODO: add option to remove links
 
 def sanitize(word: str) -> str:
-    
+    # TODO: implement
     return word
 
 def has_fields(notetype: NoteType, fields: list) -> bool:
@@ -115,8 +115,6 @@ def update_notes(col: Collection, nids: Sequence[NoteId], selected_fields: dict[
                 max=len(nids),
             )
         )
-
-        time.sleep(.1) # dont ask
 
         note = col.get_note(nid)
 
