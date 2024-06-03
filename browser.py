@@ -108,7 +108,6 @@ def update_notes(col: Collection, nids: Sequence[NoteId], selected_fields: dict[
     
     for i, nid in enumerate(nids):
 
-        log(f"Processing note {i + 1} of {len(nids)}")
         aqt.mw.taskman.run_on_main(
             lambda: aqt.mw.progress.update(
                 label=f"Processing notes... ({i}/{len(nids)})",
