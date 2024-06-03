@@ -185,7 +185,7 @@ def commit_op(notes: Sequence[Note], parent: QWidget) -> CollectionOp[OpChanges]
     )
 
 def commit_action(col: Collection, notes: Sequence[Note]) -> OpChanges:
-    custom_undo_pos = col.add_custom_undo_entry("Joto bulk-update data")
+    custom_undo_pos = col.add_custom_undo_entry("Takoboto bulk-inject links")
 
     for note in notes:
         col.update_note(note)
