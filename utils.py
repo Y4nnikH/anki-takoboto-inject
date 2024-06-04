@@ -10,6 +10,7 @@ def takoboto_link_word(word: str, id: int) -> str:
 
 
 def log(msg: str):
+    # TODO: fix encoding issue with japanese characters
     print("[Takoboto Addon]", msg)
 
 
