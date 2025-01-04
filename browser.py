@@ -17,7 +17,7 @@ from .utils import log, takoboto_link_word
 
 def setup_browser_menu(browser: Browser):
     """ Add bulk-inject option """
-    a = QAction("Takoboto inject links for android", browser)
+    a = QAction("Takoboto Inject Links for Android", browser)
     a.triggered.connect(lambda: bulk_update_selected_notes(browser))
     browser.form.menuEdit.addSeparator()
     browser.form.menuEdit.addAction(a)
