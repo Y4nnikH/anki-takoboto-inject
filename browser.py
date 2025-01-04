@@ -65,6 +65,10 @@ def bulk_options_dialog(browser: Browser) -> Tuple[dict[str, bool], bool, bool]:
         dialog.layout().addWidget(field_checkboxes[-2], i + 1, 0, 1, 1)
         dialog.layout().addWidget(field_checkboxes[-1], i + 1, 1, 1, 1)
 
+    if len(field_names) % 2 == 1:
+        field_checkboxes.append(QCheckBox(field_names[-1]))
+        dialog.layout().addWidget(field_checkboxes[-1], len(field_names) // 2 + 1, 0, 1, 1)
+
     label_2 = QLabel("If an exact match is not found")
     behaviour_radio = QButtonGroup()
     choose_first_radio = QRadioButton("Choose first match")
@@ -111,7 +115,9 @@ def bulk_options_dialog(browser: Browser) -> Tuple[dict[str, bool], bool, bool]:
 
     if dialog.result() == QDialog.DialogCode.Accepted:
         selected_fields = {}
+        print(len(field_checkboxes))
         for i, field_name in enumerate(field_names):
+            print(i, field_name)
             checkbox = field_checkboxes[i]
             selected_fields[field_name] = checkbox.isChecked()
         return selected_fields, choose_first_radio.isChecked(), replace_radio.isChecked(), field_combo.currentText()
